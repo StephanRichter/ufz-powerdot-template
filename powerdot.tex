@@ -13,6 +13,7 @@
 \lastindistinctive=726
 \lastmagic=195
 
+
 \pdsetup{}
 
 \title{bioremediation and the cracked crystall ball}
@@ -29,21 +30,21 @@
 \section{motivation}
 \begin{slide}{situation}
 \begin{itemize}
- \item many former industrial sites
+ \item many former industrial sites\pause
  \item toxic pollutants sept into the soil for years/decades
- \includegraphics[width=0.8\textwidth]{waggon.ps}
- \item substances still there, resist degradation
+ \includegraphics[width=0.8\textwidth]{waggon.ps}\pause
+ \item substances still there, resist degradation\pause
  \item for some substances: degraders known
 \end{itemize}
 \end{slide}
 
 \begin{slide}{idea: faciliation of BIOREMEDIATION using MULTIPLE BACTERIAL SPECIES}
 \begin{itemize}
- \item potential degrading bacteria known\\ (at least for some contaminants)\newline
- \item how can we take advantage of those bacteria?\newline
- \item can't we use them for faciliation of contaminat removal?\newline
- \item what additions are needed?\newline
- \item what are the side products of pollutant mineralization?\newline
+ \item potential degrading bacteria known\\ (at least for some contaminants)\newline\pause
+ \item how can we take advantage of those bacteria?\newline\pause
+ \item can't we use them for faciliation of contaminat removal?\newline\pause
+ \item what additions are needed?\newline\pause
+ \item what are the side products of pollutant mineralization?\newline\pause
  \item what can we do about the side products?
 \end{itemize}
 \end{slide}
@@ -60,7 +61,7 @@
   \item present bacteria
    \newline
  \end{itemize}
-
+\pause
  \item desired \textbf{toolbox} output: \textbf{solution strategy}
  \begin{itemize}
   \item bacteria to introduce
@@ -74,41 +75,42 @@
 
 \begin{slide}{main functionality}
 \begin{itemize}
- \item identify potential degraders in online databases\newline
- \item identify intermediates and dead end products\newline
- \item identify degraders for intermediates/dead end products\newline
- \item \textcolor{gray}{determine optimal set of bacteria\footnote{not implemented, yet}}\newline
+ \item identify potential degraders in online databases\newline\pause
+ \item identify intermediates and dead end products\newline\pause
+ \item identify degraders for intermediates/dead end products\newline\pause \\
+ \indent $\Rightarrow$ multi-species bacterial networks\newline\pause
+ \item \textcolor{gray}{determine optimal set of bacteria\footnote{not implemented, yet}}\newline\pause
  \item \textcolor{gray}{design wet land experiments for verification\footnotemark[1]}
 \end{itemize}
-\indent $\Rightarrow$ multi-species bacterial networks
+
 \end{slide}
 
 \begin{slide}{basic principle}
 \begin{itemize}
- \item use online databases\newline
- \item search for reactions needed for degradation\newline
- \item search enzymes for reactions\newline
- \item search genes ($\Rightarrow$ bacteria) coding for enzymes\newline
- \item assemble metabolic networks\newline
+ \item use online databases\newline\pause
+ \item search for reactions needed for degradation\newline\pause
+ \item search enzymes for reactions\newline\pause
+ \item search genes ($\Rightarrow$ bacteria) coding for enzymes\newline\pause
+ \item assemble metabolic networks\newline\pause
  \item calculate consumed and produced substances
 \end{itemize}
 \end{slide}
 
 \begin{slide}{technology}
 \begin{itemize}
- \item used content from online databaases collected in local databases\newline
- \item calculation algorithms based on graph theory and flux balance analysis\newline
- \item algorithms rely on \textbf{data accuracy} and numeric solvers (linear programming)!\newline
- \item $\Rightarrow$ prone to inconsistent data\newline
+ \item used content from online databaases collected in local databases\newline\pause
+ \item calculation algorithms based on graph theory and flux balance analysis\newline\pause
+ \item algorithms rely on \textbf{data accuracy} and numeric solvers (linear programming)!\newline\pause
+ \item $\Rightarrow$ prone to inconsistent data\newline\pause
  \item $\Rightarrow$ calculation take long times for whole-cell models
 \end{itemize}
 \end{slide}
 
 \begin{slide}{problems}
 \begin{itemize}
-  \item inconsistent format of data $\Rightarrow$ high programming overhead\newline
+  \item inconsistent format of data\pause $\Rightarrow$ high programming overhead\newline\pause
   \item inconsistent / unbalanced reactions in databases\newline \\
-  \includegraphics[width=0.9\textwidth]{examples.ps}
+  \includegraphics[width=0.9\textwidth]{examples.ps}\pause
   $\Rightarrow$ inconsistent results
 \end{itemize}
 \end{slide}
@@ -123,7 +125,7 @@
 
 \begin{figure}
 %\centering
-\begin{tiny}
+\begin{small}
 \begin{tikzpicture}
 
 	% DECLARE VARS:
@@ -132,7 +134,7 @@
     \OuterRadius=10
     
     % SET PARAMS
-    \Radius=2.9 % CIRCLE RADIUS (cm) CAN BE CHANGED HERE
+    \Radius=2.95 % CIRCLE RADIUS (cm) CAN BE CHANGED HERE
     \Decimals=2 % NUMBER OF DECIMALS BEHIND DOT    
     \multiply\OuterRadius by \Radius
 	\advance\OuterRadius by 5 % DISTANCE OF DESCRIPTION (mm) CAN BE CHANGED HERE
@@ -195,7 +197,7 @@
        \fi
        \global\Start=\End
 	};
-\end{tikzpicture}\end{tiny}
+\end{tikzpicture}\end{small}
 
 \end{figure}
 inconsistency number and composition in KEGG reactions
