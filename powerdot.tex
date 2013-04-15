@@ -59,17 +59,41 @@
 \end{itemize}
 \end{slide}
 
-\section{Toolbox development}
+\section{toolbox development}
 
-\begin{slide}{Main functionality}
+\begin{slide}{main functionality}
 \begin{itemize}
- \item identify potential degraders in online databases
- \item identify intermediates and dead end products
- \item identify degraders for intermediates/dead end products
- \item \textcolor{gray}{determine optimal set of bacteria\footnote{not implemented, yet}}
+ \item identify potential degraders in online databases\newline
+ \item identify intermediates and dead end products\newline
+ \item identify degraders for intermediates/dead end products\newline
+ \item \textcolor{gray}{determine optimal set of bacteria\footnote{not implemented, yet}}\newline
  \item \textcolor{gray}{design wet land experiments for verification\footnotemark[1]}
 \end{itemize}
 \indent $\Rightarrow$ multi-species bacterial networks
 \end{slide}
+
+\begin{slide}{basic principle}
+\begin{itemize}
+ \item use online databases\newline
+ \item search for reactions needed for degradation\newline
+ \item search enzymes for reactions\newline
+ \item search genes ($\Rightarrow$ bacteria) coding for enzymes\newline
+ \item assemble metabolic networks\newline
+ \item calculate consumed and produced substances
+\end{itemize}
+\end{slide}
+
+\begin{slide}{technology}
+\begin{itemize}
+ \item used content from online databaases collected in local databases\newline
+ \item calculation algorithms based on graph theory and flux balance analysis\newline
+ \item algorithms rely on \textbf{data accuracy} and numeric solvers (linear programming)!\newline
+ \item $\Rightarrow$ prone to inconsistent data\newline
+ \item $\Rightarrow$ calculation take long times for whole-cell models
+\end{itemize}
+
+\end{slide}
+
+
 
 \end{document}
