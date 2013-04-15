@@ -108,17 +108,18 @@
 
 \begin{slide}{problems}
 \begin{itemize}
-  \item inconsistent format of data\pause $\Rightarrow$ high programming overhead\newline\pause
+  \item annotational inconsistencies\newline\pause
+  \item inconsistent format of data \pause$\Rightarrow$ high programming overhead\newline\pause
   \item inconsistent / unbalanced reactions in databases\newline \\
-  \includegraphics[width=0.9\textwidth]{examples.ps}\pause
+  \includegraphics[width=0.9\textwidth]{examples.ps}\\ \pause
   $\Rightarrow$ inconsistent results
 \end{itemize}
 \end{slide}
 \newcommand{\fordataset}{\foreach \Num/\description/\color/\pattern in {
-	\the\lastbalanced / balanced		/green/north east lines,
-	 \the\lastindistinctive / \indistinct /yellow/north west lines,
-	\the\lastunbalanced / unbalanced without \magic	/orange/dots,
-	 \the\lastmagic / \magic		/red/vertical lines}
+	\the\lastbalanced / balanced \\	reactions:\\	/green/north east lines,
+	 \the\lastindistinctive / \indistinct\ reactions:\\/yellow/north west lines,
+	\the\lastunbalanced / unbalanced\slash\magic\\reactions:/orange/dots,
+	 \the\lastmagic / \magic \\reactions:		/red/vertical lines}
 }
 \section{database investigation}
 \begin{slide}{database example: KEGG\newline (Kyoto Encyclopedia of Genes+Genomes)}
@@ -134,7 +135,7 @@
     \OuterRadius=10
     
     % SET PARAMS
-    \Radius=2.95 % CIRCLE RADIUS (cm) CAN BE CHANGED HERE
+    \Radius=2.98 % CIRCLE RADIUS (cm) CAN BE CHANGED HERE
     \Decimals=2 % NUMBER OF DECIMALS BEHIND DOT    
     \multiply\OuterRadius by \Radius
 	\advance\OuterRadius by 5 % DISTANCE OF DESCRIPTION (mm) CAN BE CHANGED HERE
@@ -185,14 +186,14 @@
 
 		\ifnum\Middle < 100
 	  		\draw (\the\Middle:\the\Radius cm) -- (\the\Middle:\the\OuterRadius mm)
-            	node[right,align=left] {\description\ reactions:\\ \Num\ (\the\Percent .\the\decimal \%)};
+            	node[right,align=left] {\description\ \Num\ (\the\Percent .\the\decimal \%)};
 		\else
 	  		\ifnum\Middle < 270
 	  			\draw (\the\Middle:\the\Radius cm) -- (\the\Middle:\the\OuterRadius mm)
-                	node[left,align=right] {\description\ reactions:\\ \Num\ (\the\Percent .\the\decimal \%) };
+                	node[left,align=right] {\description\ \Num\ (\the\Percent .\the\decimal \%) };
 	  		\else
 	  			\draw (\the\Middle:\the\Radius cm) -- (\the\Middle:\the\OuterRadius mm)
-                	node[right,align=left] {\description\ reactions:\\ \Num\ (\the\Percent .\the\decimal \%) };
+                	node[right,align=left] {\description\  \Num\ (\the\Percent .\the\decimal \%) };
 	  		\fi
        \fi
        \global\Start=\End
@@ -203,6 +204,13 @@
 inconsistency number and composition in KEGG reactions
 \end{slide}
 
+\begin{slide}{KEGG Visit}
+ \begin{itemize}
+  \item visited Kyoto to learn more about the database
+  
+ \end{itemize}
+
+\end{slide}
 
 
 \end{document}
