@@ -1,6 +1,17 @@
 \documentclass[style=aggie]{powerdot}
 
 \usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+
+\newcommand{\magic}{transmutational} % elementally unbalanced / atom set changing / elemental deviant / ``eliant''
+\newcommand{\indistinct}{indistinct}
+
+\newcount\lastbalanced \newcount\lastunbalanced \newcount\lastindistinctive \newcount\lastmagic
+\lastbalanced=6924
+\lastunbalanced=1113
+\lastindistinctive=726
+\lastmagic=195
 
 \pdsetup{}
 
@@ -101,7 +112,94 @@
   $\Rightarrow$ inconsistent results
 \end{itemize}
 \end{slide}
+\newcommand{\fordataset}{\foreach \Num/\description/\color/\pattern in {
+	\the\lastbalanced / balanced		/green/north east lines,
+	 \the\lastindistinctive / \indistinct /yellow/north west lines,
+	\the\lastunbalanced / unbalanced without \magic	/orange/dots,
+	 \the\lastmagic / \magic		/red/vertical lines}
+}
+\section{database investigation}
+\begin{slide}{database example: KEGG\newline (Kyoto Encyclopedia of Genes+Genomes)}
 
+\begin{figure}
+%\centering
+\begin{tiny}
+\begin{tikzpicture}
+
+	% DECLARE VARS:
+    \newcount\Radius \newcount\OuterRadius \newcount\Sum \newcount\Start \newcount\End \newcount\StartAng
+    \newcount\EndAng \newcount\Middle \newcount\Percent \newcount\decimal \newcount\Decimals \newcount\dummy
+    \OuterRadius=10
+    
+    % SET PARAMS
+    \Radius=3 % CIRCLE RADIUS (cm) CAN BE CHANGED HERE
+    \Decimals=2 % NUMBER OF DECIMALS BEHIND DOT    
+    \multiply\OuterRadius by \Radius
+	\advance\OuterRadius by 5 % DISTANCE OF DESCRIPTION (mm) CAN BE CHANGED HERE
+    
+    % INITIALIZE SOME VARS
+    \dummy=1    
+    \foreach \counter in {1,...,\Decimals} { \global\multiply\dummy by 10 }
+    \Decimals=\dummy    
+    \Sum=0	
+    \Start=0
+    \End=0
+    
+    % CALCULATE SUM
+    \fordataset { \global\advance\Sum by \Num };
+    
+    % ACTUALLY DRAW
+    \fordataset {
+    
+    	% CALCULATE PERCENT AND DECIMAL PERCENT
+    	\global\Percent=\Num
+    	\global\multiply\Percent by 100
+        \global\multiply\Percent by \Decimals
+    	\global\divide\Percent by \Sum
+        \global\decimal=\Percent
+        \global\divide\Percent by \Decimals
+        \global\multiply\Percent by \Decimals
+        \global\advance\decimal by -\Percent
+        \global\divide\Percent by \Decimals
+        
+    	% CALCULATE ANGLES
+        \global\advance\End by \Num
+		\global\StartAng=-\Start
+		\global\multiply\StartAng by 360
+		\global\divide\StartAng by \Sum
+		\global\advance\StartAng by 450	
+		\global\EndAng=-\End
+		\global\multiply\EndAng by 360
+		\global\divide\EndAng by \Sum
+		\global\advance\EndAng by 450
+		\global\Middle=-\Start
+		\global\advance\Middle by -\End
+		\global\multiply\Middle by 180
+		\global\divide\Middle by \Sum
+		\global\advance\Middle by 450
+
+		\draw[fill=\color,postaction={pattern=\pattern}]
+        	(0,0) -- (\the\EndAng:\the\Radius cm) arc (\the\EndAng:\the\StartAng:\the\Radius cm);
+
+		\ifnum\Middle < 100
+	  		\draw (\the\Middle:\the\Radius cm) -- (\the\Middle:\the\OuterRadius mm)
+            	node[right,align=left] {\description\ reactions:\\ \Num\ (\the\Percent .\the\decimal \%)};
+		\else
+	  		\ifnum\Middle < 270
+	  			\draw (\the\Middle:\the\Radius cm) -- (\the\Middle:\the\OuterRadius mm)
+                	node[left,align=right] {\description\ reactions:\\ \Num\ (\the\Percent .\the\decimal \%) };
+	  		\else
+	  			\draw (\the\Middle:\the\Radius cm) -- (\the\Middle:\the\OuterRadius mm)
+                	node[right,align=left] {\description\ reactions:\\ \Num\ (\the\Percent .\the\decimal \%) };
+	  		\fi
+       \fi
+       \global\Start=\End
+	};
+\end{tikzpicture}\end{tiny}
+
+\end{figure}
+inconsistency number and composition in KEGG reactions
+\end{slide}
 
 
 
