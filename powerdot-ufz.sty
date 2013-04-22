@@ -38,7 +38,7 @@
   ifsetup=landscape,
     lfpos={.02\slidewidth,.02\slideheight},
     cfpos={.5\slidewidth,.02\slideheight},
-    rfpos={.98\slidewidth,.02\slideheight},
+    rfpos={.75\slidewidth,.043\slideheight},
     tocsecsep=2.5ex,
     tocslidesep=1.2ex,
     tocslideindent=1ex,
@@ -81,7 +81,7 @@
     textpos={.03\slidewidth,.87\slideheight},
     textwidth=.94\slidewidth
 }{%
-  \pdifsetup{landscape}{%
+ \pdifsetup{landscape}{%
     \pd@sailorroundedtopframe{.15\slideheight}%
   }{%
     \pd@sailorroundedtopframe{.1\slideheight}%
@@ -105,19 +105,13 @@
     \pd@sailorroundedframe{\slidewidth}{.25\slidewidth}{.7\slideheight}%
       {.12\slideheight}%
   }%
-  \pd@sailorgrad\slidewidth{.5\slideheight}%
-  \psset{linecolor=ufzgray2}%
-  \psarc*(0,.2\slideheight){3pt}{270}{90}%
-  \multips(.08\slidewidth,.2\slideheight)(.08\slidewidth,0){9}{%
-    \qdisk(0,0){3pt}%
-  }%
 }}
 \pddefinetemplate[topframe]{slide}{}{{%
   \pdifsetup{landscape}{%
     \pd@sailorgrad{.16\slidewidth}{.5\slideheight}%
     \psset{linecolor=ufzgray2}%
-    \multips(.16\slidewidth,0.75pt)(0,.01\slideheight){82}{%
-      \qdisk(0,0){.75pt}%
+    \multips(.16\slidewidth,0.75pt)(0,.01\slideheight){77}{%
+      \qdisk(0,0.033\slidewidth){.75pt}%
     }%
   }\pd@sailortocbg
 }}
@@ -143,6 +137,7 @@
   titlepos={.4\slidewidth,.695\slideheight},
   titlefont=\Large\bfseries\color{white}\centering
 }{{%
+%  \rput[tl](.75\slidewidth,1.7){\includegraphics{logo.ps}}
   \pd@sailorgrad\slidewidth{.5\slideheight}%
   \psset{linecolor=black}%
   \pdifsetup{landscape}{%
