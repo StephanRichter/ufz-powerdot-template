@@ -17,7 +17,7 @@
 \pdsetup{}
 
 \title{bioremediation and the cracked crystall ball}
-\author{Stephan Richter}
+\author{Stephan Richter - Higrade DocConference}
 \date{2013-04-30}
 
 \begin{document}
@@ -62,6 +62,11 @@
    \newline
  \end{itemize}
 \pause
+\begin{tikzpicture}[overlay]
+    \node[anchor=south west,inner sep=0] at (0.4\slidewidth,-0.2\slideheight) {\includegraphics[width=0.3\slidewidth]{ball.ps}};
+\end{tikzpicture}
+
+
  \item desired \textbf{toolbox} output: \textbf{solution strategy}
  \begin{itemize}
   \item bacteria to introduce
@@ -107,11 +112,30 @@
 \end{slide}
 
 \begin{slide}{problems}
+\begin{tikzpicture}[overlay]
+    \node at (0.35\slidewidth,-0.49\slideheight) {\includegraphics[width=0.3\slidewidth]{ball.ps}};
+\end{tikzpicture}
+
 \begin{itemize}
-  \item annotational inconsistencies\newline\pause
-  \item inconsistent format of data \pause$\Rightarrow$ high programming overhead\newline\pause
-  \item inconsistent / unbalanced reactions in databases\newline \\
-  \includegraphics[width=0.9\textwidth]{examples.ps}\\ \pause
+  \item annotational inconsistencies\newline
+\begin{tikzpicture}[overlay]
+  \draw (4.4,-2.4)--(4.5,-2.3)--(4.6,-2.5);
+\end{tikzpicture}
+  
+  \pause\item inconsistent format of data
+  \begin{tikzpicture}[overlay]
+  \draw (.75,-2.1)--(.65,-2)--(.55,-2.2);
+\end{tikzpicture}
+  \pause$\Rightarrow$ high programming overhead\newline
+    \begin{tikzpicture}[overlay]
+  \draw (4.35,-1.84)--(4.47,-1.74)--(4.6,-1.94);
+\end{tikzpicture}
+
+  \pause\item inconsistent / unbalanced reactions in databases\newline
+      \begin{tikzpicture}[overlay]
+  \draw (4.4,2.9)--(4.6,3.11)--(4.7,2.95);
+\end{tikzpicture}
+  \pause  \includegraphics[width=0.9\textwidth]{examples.ps}\\ \pause
   $\Rightarrow$ inconsistent results
 \end{itemize}
 \end{slide}
