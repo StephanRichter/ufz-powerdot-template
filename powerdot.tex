@@ -1,23 +1,11 @@
 \documentclass[style=ufz]{powerdot}
 
 \usepackage[utf8]{inputenc}
-\usepackage{tikz}
-\usetikzlibrary{patterns}
-
-\newcommand{\magic}{transmutational} % elementally unbalanced / atom set changing / elemental deviant / ``eliant''
-\newcommand{\indistinct}{indistinct}
-
-\newcount\lastbalanced \newcount\lastunbalanced \newcount\lastindistinctive \newcount\lastmagic
-\lastbalanced=6924
-\lastunbalanced=1113
-\lastindistinctive=726
-\lastmagic=195
 
 
-\pdsetup{}
 
-\title{bioremediation and the cracked crystall ball}
-\author{Stephan Richter - Higrade DocConference}
+\title{Your presentation title}
+\author{John Doe}
 \date{2013-04-30}
 
 \begin{document}
@@ -28,230 +16,32 @@
 \end{slide}
 
 \section{motivation}
-\begin{slide}{situation}
+\begin{slide}{first slide title}
 \begin{itemize}
- \item many former industrial sites\pause
- \item toxic pollutants sept into the soil for years/decades
- \includegraphics[width=0.8\textwidth]{waggon.ps}\pause
- \item substances still there, resist degradation\pause
- \item for some substances: degraders known
+ \item first item on first slide\pause
+ \item second item
 \end{itemize}
 \end{slide}
 
-\begin{slide}{idea: faciliation of BIOREMEDIATION using MULTIPLE BACTERIAL SPECIES}
+\begin{slide}{second slide}
+Your text may go here
+\end{slide}
+
+\section{second section}
+
+\begin{slide}{how to compile}
 \begin{itemize}
- \item potential degrading bacteria known\\ (at least for some contaminants)\newline\pause
- \item how can we take advantage of those bacteria?\newline\pause
- \item can't we use them for faciliation of contaminat removal?\newline\pause
- \item what additions are needed?\newline\pause
- \item what are the side products of pollutant mineralization?\newline\pause
- \item what can we do about the side products?
+ \item 1st: compile the *.tex file with LaTeX, so you get a *.dvi file\pause\newline
+ \item 2nd: compile the *.dvi with DVItoPS to get a postscript file\pause\newline
+ \item 3nd: compile the *.ps file with PStoPDF to get a pdf (portable document format) file\pause\newline
+ \item in KILE, you can do this at once with (a well configured) QuickBuild
 \end{itemize}
 \end{slide}
-
-\begin{slide}{idea: What are we aiming for?}
+\begin{slide}{editing the template}
 \begin{itemize}
- \item input: soil situation
- \begin{itemize}
-  \item pH
-  \item himudity
-  \item oxygen level
-  \item temperature
-  \item salinity
-  \item present bacteria
-   \newline
- \end{itemize}
-\pause
-\begin{tikzpicture}[overlay]
-    \node[anchor=south west,inner sep=0] at (0.4\slidewidth,-0.2\slideheight) {\includegraphics[width=0.3\slidewidth]{ball.ps}};
-\end{tikzpicture}
-
-
- \item desired \textbf{toolbox} output: \textbf{solution strategy}
- \begin{itemize}
-  \item bacteria to introduce
-  \item micronutrients to supply
- \end{itemize}
-
+ \item this powerdot presentation uses the ufz-style\pause\newline
+ \item to alter the style, edit powerdot-ufz.sty
 \end{itemize}
 \end{slide}
-
-\section{toolbox development}
-
-\begin{slide}{main functionality}
-\begin{itemize}
- \item identify potential degraders in online databases\newline\pause
- \item identify intermediates and dead end products\newline\pause
- \item identify degraders for intermediates/dead end products\newline\pause \\
- \indent $\Rightarrow$ multi-species bacterial networks\newline\pause
- \item \textcolor{gray}{determine optimal set of bacteria\footnote{not implemented, yet}}\newline\pause
- \item \textcolor{gray}{design wet land experiments for verification\footnotemark[1]}
-\end{itemize}
-
-\end{slide}
-
-\begin{slide}{basic principle}
-\begin{itemize}
- \item use online databases\newline\pause
- \item search for reactions needed for degradation\newline\pause
- \item search enzymes for reactions\newline\pause
- \item search genes ($\Rightarrow$ bacteria) coding for enzymes\newline\pause
- \item assemble metabolic networks\newline\pause
- \item calculate consumed and produced substances
-\end{itemize}
-\end{slide}
-
-\begin{slide}{technology}
-\begin{itemize}
- \item used content from online databases collected in local databases\newline\pause
- \item calculation algorithms based on graph theory and flux balance analysis\newline\pause
- \item algorithms rely on \textbf{data accuracy} and numeric solvers (linear programming)!\newline\pause
- \item $\Rightarrow$ prone to inconsistent data\newline\pause
- \item $\Rightarrow$ calculation takes long times for whole-cell models
-\end{itemize}
-\end{slide}
-
-\begin{slide}{problems}
-\begin{tikzpicture}[overlay]
-    \node at (0.35\slidewidth,-0.49\slideheight) {\includegraphics[width=0.3\slidewidth]{ball.ps}};
-\end{tikzpicture}
-
-\begin{itemize}
-  \item annotational inconsistencies\newline
-\begin{tikzpicture}[overlay]
-  \draw (4.4,-2.4)--(4.5,-2.3)--(4.6,-2.5);
-\end{tikzpicture}
-  
-  \pause\item inconsistent format of data
-  \begin{tikzpicture}[overlay]
-  \draw (.75,-2.1)--(.65,-2)--(.55,-2.2);
-\end{tikzpicture}
-  \pause$\Rightarrow$ high programming overhead\newline
-    \begin{tikzpicture}[overlay]
-  \draw (4.35,-1.84)--(4.47,-1.74)--(4.6,-1.94);
-\end{tikzpicture}
-
-  \pause\item inconsistent / unbalanced reactions in databases\newline
-      \begin{tikzpicture}[overlay]
-  \draw (4.4,2.9)--(4.6,3.11)--(4.7,2.95);
-\end{tikzpicture}
-  \pause  \includegraphics[width=0.9\textwidth]{examples.ps}\\ \pause
-  $\Rightarrow$ inconsistent results
-\end{itemize}
-\end{slide}
-\newcommand{\fordataset}{\foreach \Num/\description/\color/\pattern in {
-	\the\lastbalanced / balanced \\	reactions:\\	/green/north east lines,
-	 \the\lastindistinctive / \indistinct\ reactions:\\/yellow/north west lines,
-	\the\lastunbalanced / unbalanced\slash\magic\\reactions:/orange/dots,
-	 \the\lastmagic / \magic \\reactions:		/red/vertical lines}
-}
-\section{database investigation}
-\begin{slide}{database example: KEGG\newline (Kyoto Encyclopedia of Genes+Genomes)}
-
-\begin{figure}
-%\centering
-\begin{small}
-\begin{tikzpicture}
-
-	% DECLARE VARS:
-    \newcount\Radius \newcount\OuterRadius \newcount\Sum \newcount\Start \newcount\End \newcount\StartAng
-    \newcount\EndAng \newcount\Middle \newcount\Percent \newcount\decimal \newcount\Decimals \newcount\dummy
-    \OuterRadius=10
-    
-    % SET PARAMS
-    \Radius=2.98 % CIRCLE RADIUS (cm) CAN BE CHANGED HERE
-    \Decimals=2 % NUMBER OF DECIMALS BEHIND DOT    
-    \multiply\OuterRadius by \Radius
-	\advance\OuterRadius by 5 % DISTANCE OF DESCRIPTION (mm) CAN BE CHANGED HERE
-    
-    % INITIALIZE SOME VARS
-    \dummy=1    
-    \foreach \counter in {1,...,\Decimals} { \global\multiply\dummy by 10 }
-    \Decimals=\dummy    
-    \Sum=0	
-    \Start=0
-    \End=0
-    
-    % CALCULATE SUM
-    \fordataset { \global\advance\Sum by \Num };
-    
-    % ACTUALLY DRAW
-    \fordataset {
-    
-    	% CALCULATE PERCENT AND DECIMAL PERCENT
-    	\global\Percent=\Num
-    	\global\multiply\Percent by 100
-        \global\multiply\Percent by \Decimals
-    	\global\divide\Percent by \Sum
-        \global\decimal=\Percent
-        \global\divide\Percent by \Decimals
-        \global\multiply\Percent by \Decimals
-        \global\advance\decimal by -\Percent
-        \global\divide\Percent by \Decimals
-        
-    	% CALCULATE ANGLES
-        \global\advance\End by \Num
-		\global\StartAng=-\Start
-		\global\multiply\StartAng by 360
-		\global\divide\StartAng by \Sum
-		\global\advance\StartAng by 450	
-		\global\EndAng=-\End
-		\global\multiply\EndAng by 360
-		\global\divide\EndAng by \Sum
-		\global\advance\EndAng by 450
-		\global\Middle=-\Start
-		\global\advance\Middle by -\End
-		\global\multiply\Middle by 180
-		\global\divide\Middle by \Sum
-		\global\advance\Middle by 450
-
-		\draw[fill=\color,postaction={pattern=\pattern}]
-        	(0,0) -- (\the\EndAng:\the\Radius cm) arc (\the\EndAng:\the\StartAng:\the\Radius cm);
-
-		\ifnum\Middle < 100
-	  		\draw (\the\Middle:\the\Radius cm) -- (\the\Middle:\the\OuterRadius mm)
-            	node[right,align=left] {\description\ \Num\ (\the\Percent .\the\decimal \%)};
-		\else
-	  		\ifnum\Middle < 270
-	  			\draw (\the\Middle:\the\Radius cm) -- (\the\Middle:\the\OuterRadius mm)
-                	node[left,align=right] {\description\ \Num\ (\the\Percent .\the\decimal \%) };
-	  		\else
-	  			\draw (\the\Middle:\the\Radius cm) -- (\the\Middle:\the\OuterRadius mm)
-                	node[right,align=left] {\description\  \Num\ (\the\Percent .\the\decimal \%) };
-	  		\fi
-       \fi
-       \global\Start=\End
-	};
-\end{tikzpicture}\end{small}
-
-\end{figure}
-inconsistency number and composition in KEGG reactions
-\end{slide}
-
-\begin{slide}{KEGG Visit}
- \begin{itemize}
-  \item visited Kyoto to learn more about the database\newline\pause
-  \item exchange of ideas\newline\pause
-  \item KEGG people incooperated corrections
- \end{itemize}
-
-\end{slide}
-
-\section{next steps}
-\begin{slide}{publication}
-\begin{itemize}
-  \item publication of algorithm, results and ideas\newline\pause
-  \item release of software package for database analysis
-\end{itemize}
-\end{slide}
-
-\begin{slide}{experiments}
- \begin{itemize}
-  \item cooperation with Institute for Theoretical Biology in Berlin \newline \pause
-  \item two-species experiments with particular Cyanobacteria stems and E.Coli  
- \end{itemize}
-
-\end{slide}
-
 
 \end{document}
